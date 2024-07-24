@@ -1,5 +1,10 @@
 name: "200lab CD"
 
+# Cancel previous runs that are not completed
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
+  cancel-in-progress: true
+
 on:
   push:
     branches:
@@ -34,7 +39,7 @@ jobs:
           port: 22
           script: |
             docker rm -f website &2>/dev/null || true
-            docker images --format '{{.Repository}}:{{.Tag}}' | grep 'hero2510/crawler-website' | xargs -r docker rmi
+            docker images --format '{{.Repository}}:{{.Tag}}' | grep 'hero2510/crawler-website' | xargs -r docker rmi -f
             docker run --net crawler -d --name website -p 3100:80 ${{ steps.meta.outputs.tags }}
         continue-on-error: true
             
