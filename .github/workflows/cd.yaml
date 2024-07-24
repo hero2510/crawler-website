@@ -39,7 +39,7 @@ jobs:
           port: 22
           script: |
             cd /home/ubuntu/crawler-demo
-            sh deploy.sh 080196/crawler-website ${{ steps.meta.outputs.tags }}
+            sh deploy.sh ${{ steps.meta.outputs.tags }}
 
       # - name: Setup SSH
       #   run: |
@@ -54,5 +54,5 @@ jobs:
       #     ssh ubuntu@${{ secrets.USER_IP }} <<EOF
       #       cd /home/ubuntu/crawler-demo
       #       sudo chmod +x deploy.sh
-      #       sh deploy.sh 080196/crawler-website ${{ env.SHORT_SHA }}
+      #       sh deploy.sh hero2510/crawler-website ${{ env.SHORT_SHA }}
       #     EOF
