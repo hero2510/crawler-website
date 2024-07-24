@@ -35,3 +35,4 @@ jobs:
           script: |
             cd /home/ubuntu/actions-runner/workingdir/crawler-website/crawler-website
             sh deploy.sh ${{ steps.meta.outputs.tags }}
+            
