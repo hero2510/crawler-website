@@ -34,4 +34,4 @@ jobs:
           port: 22
           script: |
             cd /home/ubuntu/actions-runner/workingdir/crawler-website/crawler-website
-            sh deploy.sh
+            sh deploy.sh ${{ steps.meta.outputs.tags }}
